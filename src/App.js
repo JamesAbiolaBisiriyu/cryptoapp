@@ -1,7 +1,7 @@
 import React from 'react';
-import { Switch, Route, Link } from 'react-router-dom';
+import { Routes, Route, Link } from 'react-router-dom';
 import  {Layout, Typography, Space} from 'antd';
-import { Navbar } from './components';
+import { CryptoDetail, Cryptocurrencies, Exchanges, Homepage, Navbar, News } from './components';
 import './App.css';
 
 const App = () => {
@@ -11,13 +11,34 @@ const App = () => {
         <Navbar/>
       </div>
       <div className='main'>
-
-      </div>
+      <Layout>
+        <div className='routes'>
+         <Routes>
+            <Route path='/' element = {<Homepage/>}></Route>
+            <Route path='/exchanges' element = {<Exchanges/>}></Route>
+            <Route path='/cryptocurrencies' element = {<Cryptocurrencies/>}></Route>
+            <Route path='/crypto/:coinId' element = {<CryptoDetail/>}></Route>
+            <Route path='/news' element={<News/>}></Route>
+         </Routes>
+        </div>
+      </Layout>
       <div className='footer'>
+        <Typography.Title level={5} style={{color:'white', textAlign:'center'}}>
+          Cryptoverse &copy;<br/>
+          All rights reserved 2021<br/>
+          <Space>
+          <Link to = '/'>Home</Link>
+          <Link to = '/exchanges'>Exchanges</Link>
+          <Link to = '/news'>News</Link>
 
+        </Space>
+        </Typography.Title>
+       
       </div>
     </div>
-  )
+
+      </div>
+        )
 }
 
 export default App
